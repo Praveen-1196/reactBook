@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "./axiosConfig";
-import "./styles.css";
+import "./Styles.css";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
