@@ -4,47 +4,40 @@ import "./Styles.css";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [username, setUser] = useState("");
-  const [password, setPass] = useState("");
-  const [msg, setMsg] = useState("");
-
   const navigate = useNavigate();
+  const [form, setForm] = useState({ username: "", password: "" });
 
-  const handleLogin = async () => {
-    try {
-      await axios.post(
-        "https://book-ijqy.onrender.com/login/",
-        { username, password }
-      );
-
-      navigate("/home");
-    } catch (err) {
-      setMsg("Invalid username or password");
-    }
+  const handleLogin = () => {
+    axios
+      .post("https://book-ijqy.onrender.com/login/", form, {
+        withCredentials: true,
+      })
+      .then(() => navigate("/home"));
   };
 
   return (
-    <div className="container">
-      <h2>Login</h2>
+    <div className="form-wrapper">
+      <div className="form-card">
+        <h2 className="form-title">Login</h2>
 
-      <input
-        className="input"
-        placeholder="Username"
-        onChange={(e) => setUser(e.target.value)}
-      />
+        <input
+          className="input-field"
+          type="text"
+          placeholder="Username"
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+        />
 
-      <input
-        className="input"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPass(e.target.value)}
-      />
+        <input
+          className="input-field"
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
 
-      <button className="btn" onClick={handleLogin}>
-        Login
-      </button>
-
-      <div className="message">{msg}</div>
+        <button className="btn" onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }

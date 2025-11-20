@@ -1,80 +1,232 @@
-/* Global styles */
+/* ==================================
+   GLOBAL DARK GLASSMORPHISM THEME
+   ================================== */
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
   margin: 0;
   padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1f1f3a 0%, #0a0a1a 100%);
+  min-height: 100vh;
+  color: #EAEAEA;
+  overflow-x: hidden;
+  display: block;
 }
 
-.container {
-  width: 380px;
-  background: #fff;
-  padding: 30px;
-  margin: 80px auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+a {
+  text-decoration: none;
+  color: #81D4FA;
+  transition: 0.3s ease;
 }
 
-.container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
+/* ==================================
+   NAVBAR (FINAL FIXED VERSION)
+   ================================== */
 
-.input {
+.navbar {
+  position: sticky;
+  top: 0;
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
+  height: 75px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  justify-content: space-between;   
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #81D4FA;
+  text-shadow: 0 0 5px rgba(129, 212, 250, 0.5);
+}
+
+/* Link group */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;                        /* FIX: safe spacing */
+}
+
+/* Individual items */
+.nav-item {
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #C0C0C0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ==================================
+   FORMS (Login/Register)
+   ================================== */
+
+.form-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-card {
+  width: 400px;
+  padding: 55px 50px;       /* FIXED: more inner spacing */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #81D4FA;
+  margin-bottom: 35px;
+  text-shadow: 0 0 8px rgba(129, 212, 250, 0.6);
+}
+
+/* Input fields — FIXED */
+.input-field {
+  width: 100%;
+  padding: 12px 9px;        /* FIX: added padding */
+  margin-bottom: 28px;       /* FIX: more gap */
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.4);
+  color: #EAEAEA;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
   outline: none;
+  transition: 0.3s ease;
 }
 
-.input:focus {
-  border-color: #4a90e2;
+.input-field:focus {
+  background: rgba(0,0,0,0.6);
+  border-color: #81D4FA;
+  box-shadow: 0 0 0 3px rgba(129,212,250,0.3);
 }
 
+/* Button */
 .btn {
   width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background: #4a90e2;
-  color: white;
-  font-weight: bold;
+  padding: 18px;
+  background: #81D4FA;
+  color: #1f1f3a;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 0 15px rgba(129,212,250,0.4);
+  transition: 0.2s ease;
 }
 
 .btn:hover {
-  background: #3a7cc2;
+  background: #79C2E3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(129,212,250,0.6);
 }
 
-.message {
-  margin-top: 15px;
+/* ==================================
+   BOOK GRID
+   ================================== */
+
+.page-title {
   text-align: center;
-  font-size: 14px;
-  color: red;
+  font-size: 36px;
+  color: #81D4FA;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+.book-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px 100px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .book-card {
-  background: #fff;
-  padding: 15px;
-  margin: 15px auto;
-  max-width: 500px;
-  border-radius: 8px;
-  border-left: 5px solid #4a90e2;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 
 .book-card h3 {
-  margin: 0;
-  color: #333;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .book-card p {
-  margin: 5px 0;
-  color: #555;
+  color: #CCCCCC;
+  margin-bottom: 20px;
+}
+
+.book-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.fav-btn,
+.remove-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.4);
+  color: #81D4FA;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.remove-btn {
+  color: #FF8A80;
+}
+
+.fav-btn:hover,
+.remove-btn:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
