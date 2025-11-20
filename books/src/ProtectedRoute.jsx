@@ -7,8 +7,8 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     axios
-      .get("https://book-ijqy.onrender.com/books/", {
-        withCredentials: true, // 🔥 SEND COOKIE
+      .get("https://book-ijqy.onrender.com/get_books/", {
+        withCredentials: true,
       })
       .then(() => setAllowed(true))
       .catch(() => setAllowed(false));
