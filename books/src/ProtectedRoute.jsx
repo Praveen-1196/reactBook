@@ -7,7 +7,7 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     axios
-      .get("https://book-ijqy.onrender.com/books/")
+      .get("https://book-ijqy.onrender.com/get_books/")
       .then(() => setAllowed(true))
       .catch(() => setAllowed(false));
   }, []);
