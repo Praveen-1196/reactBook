@@ -7,12 +7,16 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     axios
-      .get("https://book-ijqy.onrender.com/get_books/")
+      .get("https://book-ijqy.onrender.com/books/", {
+        withCredentials: true, // 🔥 SEND COOKIE
+      })
       .then(() => setAllowed(true))
       .catch(() => setAllowed(false));
   }, []);
 
-  if (allowed === null) return <h3 style={{ textAlign: "center" }}>Loading...</h3>;
+  if (allowed === null)
+    return <h3 style={{ textAlign: "center" }}>Checking access...</h3>;
+
   if (allowed === false) return <Navigate to="/login" />;
 
   return children;

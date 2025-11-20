@@ -3,6 +3,9 @@ import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
 import ProtectedRoute from "./ProtectedRoute";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
