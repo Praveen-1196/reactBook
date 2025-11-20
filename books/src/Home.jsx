@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("https://book-ijqy.onrender.com/books/")
+      .get("https://book-ijqy.onrender.com/get_books/")
       .then((res) => setBooks(res.data))
       .catch(() => navigate("/login"));
   }, []);
